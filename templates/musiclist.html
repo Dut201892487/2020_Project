@@ -1,0 +1,117 @@
+<html>
+   <head>
+       <title>
+           musiclist
+       </title>
+       <style type="text/css">
+           ul{
+            margin: 30px auto;/*框框整体的位置，30px是指离网页的顶部和下部的距离，auto控制的是左右距离为自动调节*/
+            width: 1230px;/*框框的宽度*/
+            height: 50px;/*框框的长度*/
+            padding: 0px;/*将框框的padding设置为零，不然会导致框框里的内容与框边缘有间隔*/
+            border:1px solid #000;/*添加边框*/
+        }
+
+        li{
+            list-style-type: none;/* 去掉li前的点 */
+            float: left;/*将li设置成做浮动，变为联动*/
+        }
+
+        a{
+
+            display: block;/*将a变成块状*/
+
+            width: 205px;/*设置块的宽度*/
+
+            height: 50px;/*设置块的长度*/
+
+            font-family: Microsoft Yahei;
+
+            line-height: 50px;/*设置字体在块中的高度*/
+
+            background-color: #2f4f4f;
+
+            margin: 0px 0px;/*块里的高宽通过margin设置*/
+
+            color: #fff;
+
+            text-align: center;/*字体居中*/
+
+            text-decoration: none;/*去掉下划线*/
+
+            font-size: 15px;
+
+        }
+
+        a:hover{
+            background-color: #2f6f4f;
+        }
+       </style>
+
+       <style type="text/css">
+       table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 3px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #C0C0C0;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #FFFFFF;
+        }
+        </style>
+   </head>
+
+   <body>
+        <div >
+
+        <ul class=daohang>
+
+            <li><a href="/book">当当图书畅销榜</a></li>
+
+            <li><a href="/music">酷狗音乐TOP500</a></li>
+
+            <li><a href="/movie">爱奇艺VIP热播榜</a></li>
+
+            <li><a href="/moviescore">电影评分折线图</a></li>
+
+            <li><a href="/bookprice">图书价格折线图</a></li>
+
+            <li><a href="/musictime">音乐时长散点图</a></li>
+
+        </ul>
+
+    </div>
+
+        {% if data %}
+        <table  align="center" border="1" class="gridtable">
+            <tr style="height:30px;">
+                     <th style="height:30px;width: 205px;">number</th>
+                     <th style="height:30px;width: 205px;">song</th>
+                     <th style="height:30px;width: 205px;">singer</th>
+                     <th style="height:30px;width: 205px;">time</th>
+            </tr>
+            {%for i in data:%}
+            <tr style="height:30px;">
+                     <td style="height:30px;width: 205px;">{{i['number']}}</td>
+                     <td style="height:30px;width: 205px;">{{i['song']}}</td>
+                     <td style="height:30px;width: 205px;">{{i['singer']}}</td>
+                     <td style="height:30px;width: 205px;">{{i['time']}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        {% endif %}
+
+   </body>
